@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        /* Game Container */
+        .game-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            width: 60vw;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #fda085;
+            margin: 10px 0;
+        }
+
+        /* Input and Button Styles */
+        input {
+            border: 2px solid #fda085;
+            border-radius: 5px;
+            padding: 8px 12px;
+            width: 60%;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #f6a623;
+            box-shadow: 0 0 8px rgba(250, 167, 35, 0.5);
+        }
+
+        button {
+            background: #fda085;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #f6a623;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .child {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .msg {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            min-height: 20px;
+            margin-top: 10px;
+        }
+
+        /* Guess Count */
+        .guess-container {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .guess-container span {
+            font-weight: bold;
+            color: #f6a623;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h2>🎯 Guess a Number Between 1 and 100 🎯</h2>
+        <hr>
+        <div class="child">
+            <input type="number" id="txt" placeholder="Enter your guess...">
+            <button onclick="checkNumber()">Guess!</button>
+        </div>
+        <div class="msg"></div>
+        <div class="guess-container">No. of Guesses: <span id="guess">0</span></div>
+    </div>
+
+    <script>
+        const inputtxt = document.querySelector("#txt");
+        const displayMsg = document.querySelector(".msg");
+        const displayCount = document.querySelector("#guess");
+        let guessCount = 0;
+        let randomNumber;
+
+        function generateRandomNumber() {
+            randomNumber = Math.floor((Math.random() * 100) + 1);
+        }
+
+        function checkNumber() {
+            if (guessCount === 0) {
+                generateRandomNumber();
+            }
+
+            if (inputtxt.value) {
+                const usersguess = Number(inputtxt.value);
+                console.log(randomNumber);
+                guessCount++;
+                if (randomNumber === usersguess) {
+                    alert("🎉 Correct Guess! 🎉\nCongratulations, YOU WON!!!");
+                    guessCount = 0;
+                    displayMsg.textContent = "";
+                    displayCount.textContent = guessCount;
+                    inputtxt.value = "";
+                } else if (usersguess < randomNumber) {
+                    displayMsg.textContent = "📈 Guess Higher!";
+                } else if (usersguess > randomNumber) {
+                    displayMsg.textContent = "📉 Guess Lower!";
+                }
+                displayCount.textContent = guessCount;
+            }
+        }
+    </script>
+</body>
+</html>
