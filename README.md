@@ -1,4 +1,4 @@
-**#Welcome to the Guess a Number game! 🎮**[Guess The Number]https://akashnegi9690.github.io/GuessTheNumber/
+**#Welcome to the Guess a Number game! 🎮**[Guess The Number](https://akashnegi9690.github.io/GuessTheNumber/)
 
 In this game, the computer randomly selects a number between a specified range, and the player has to guess the number. The game provides feedback whether your guess is too high or too low until you find the correct number.
 
