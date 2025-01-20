@@ -1,4 +1,4 @@
-#Welcome to the Guess a Number game! 🎮
+**#Welcome to the Guess a Number game! 🎮**
 
 In this game, the computer randomly selects a number between a specified range, and the player has to guess the number. The game provides feedback whether your guess is too high or too low until you find the correct number.
 
